@@ -10,6 +10,10 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# ClientID
+let clientID = '36c80b6dee0f4fce97781d0f52f81215'
+let clientSecret = '098aa210a3f248d18b32c91f1f220b74'
+
 # Package Files #
 *.jar
 *.war
