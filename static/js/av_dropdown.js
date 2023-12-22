@@ -1,4 +1,4 @@
-path = '..\Resources\data.sqlite'
+path = ''
 
 function init(){
     // this checks that our initial function runs.
