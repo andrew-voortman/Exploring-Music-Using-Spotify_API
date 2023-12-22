@@ -48,5 +48,3 @@ screenshots and explanation of what we did
 ### Maps ###
 Our visualizations will include a world map displaying the top artists in each country, a breakdown of artist information in different countries, and a comparison of song popularity ratings. 
 
-
-### Conclusion ###
