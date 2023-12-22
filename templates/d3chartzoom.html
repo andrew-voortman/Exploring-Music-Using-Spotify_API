@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zoomable D3 Chart</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        .chart {
+            width: 600px;
+            height: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart" id="chart"></div>
+
+    <script>
+        var svg = d3.select('#chart').append('svg')
+            .attr('width', 600)
+            .attr('height', 400);
+
+        var zoom = d3.zoom()
+            .on('zoom', (event) => {
+                svg.attr('transform', event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Example: Drawing a rectangle
+        svg.append('rect')
+            .attr('width', 100)
+            .attr('height', 100)
+            .attr('fill', 'red');
+    </script>
+</body>
+</html>
