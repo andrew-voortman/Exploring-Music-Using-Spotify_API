@@ -8,28 +8,26 @@ let myMap = L.map("map", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(myMap);
   
-  let url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/15-Mapping-Web/Water_Hydrant_WCORP_070_WA_GDA2020_Public.geojson";
+  d3.csv(csvUrl).then(function(data) {
+    data.forEach(function(row) {
+      // Convert string values to numbers
+      row.Popularity = +row.Popularity;
+      row.Danceability = +row.Danceability;
+      // Add more properties as needed
+    });
   
-  d3.json(url).then(function(response) {
-  
-    console.log(response);
-    features = response.features;
-  
-    let heatArray = [];
-  
-    for (let i = 0; i < features.length; i++) {
-      let location = features[i].geometry;
-      if (location) {
-        //console.log(location);
-        heatArray.push([location.coordinates[1], location.coordinates[0]]);
+    // Now, you can create markers or other visual elements based on the properties
+    // For example, you might scale the marker size according to the 'Popularity'
+    data.forEach(function(row) {
+      if(row.latitude && row.longitude) { // Replace 'latitude' and 'longitude' with your actual data columns
+        L.circleMarker([row.latitude, row.longitude], {
+          radius: row.Popularity / 10, // Example of scaling the radius
+          fillColor: "#ff7800",
+          color: "#000",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.8
+        }).addTo(myMap).bindPopup("Track: " + row['Track Name'] + "<br>Artist: " + row['Artist Name']);
       }
-  
-    }
-  
-    let heat = L.heatLayer(heatArray, {
-      radius: 20,
-      blur: 35
-    }).addTo(myMap);
-  
+    });
   });
-  

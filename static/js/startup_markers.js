@@ -12,7 +12,7 @@ let myMap = L.map("map", {
   
   d3.json(url).then(function(response) {
   
-    //console.log(response);
+    //console.log(response);plotly leafy
     features = response.features;
   
     //console.log(features);
