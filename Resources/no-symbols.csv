@@ -1,4 +1,4 @@
-,Country,Track Name,Artist Name,Album Name,Popularity,Date,Markets,Danceability,Acousticness,duration,Energy,Instrumentalness,Key,Liveness,Loudness,Mode,Speechiness,Tempo,TSignature,Positiveness
+Index,Country,Track Name,Artist Name,Album Name,Popularity,Date,Markets,Danceability,Acousticness,duration,Energy,Instrumentalness,Key,Liveness,Loudness,Mode,Speechiness,Tempo,TSignature,Positiveness
 0,Global,Standing Next to You,Jung Kook,GOLDEN,91,11/3/2023,AR,0.711,0.0447,206020,0.809,0,2,0.339,-4.389,0,0.0955,106.017,4,0.816
 1,Global,greedy,Tate McRae,greedy,100,9/15/2023,AR,0.75,0.256,131872,0.733,0,6,0.114,-3.18,0,0.0319,111.018,1,0.844
 2,Global,Seven (feat. Latto) (Explicit Ver.),Jung Kook,GOLDEN,82,11/3/2023,AR,0.79,0.312,183551,0.831,0,11,0.0797,-4.185,1,0.044,124.987,4,0.872
