@@ -15,12 +15,12 @@ Kaggle.com
 alvarotrigo.com
 
 ## Table of Contents ##
-1 Pull and Clean Data 
-2 SQLite
-3 Flask Application
-4 Dashboard / HTML
-5 Dashboard / Javascript
-6 Maps
+    1. Pull and Clean Data 
+    2. SQLite
+    3. Flask Application
+    4. Dashboard / HTML
+    5. Dashboard / Javascript
+    6. Maps
 
 ## Pull and Clean Data ##
 Opened file from Kaggle.com (top-50-musicality-global.csv)
@@ -59,9 +59,4 @@ screenshots and explanation of what we did
 
 ## Maps ##
 Our visualizations will include a world map displaying the top artists in each country, a breakdown of artist information in different countries, and a comparison of song popularity ratings. 
-
-
-### Conclusion ###
-
-
 
