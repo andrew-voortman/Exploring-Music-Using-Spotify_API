@@ -11,7 +11,7 @@ import numpy as np
 # DATABASE SETUP
 
 # create engine 
-engine = create_engine("sqlite:///data.sqlite")
+engine = create_engine("sqlite:///music.db")
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
@@ -62,7 +62,7 @@ def test():
     session = Session(engine)
 
     # Query the database (replace this with your actual query)
-    results = session.query(songs.TrackName, songs.ArtistName).limit(50)
+    results = session.query(songs.trackname, songs.artistname).limit(50)
 
     result_list = [dict(row) for row in results]
 
