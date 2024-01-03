@@ -1,36 +1,93 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>test</title>
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-    <!-- Leaflet JavaScript code -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Leaflet JavaScript code -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-    <!-- Leaflet heatmap plugin-->
-    <script type="text/javascript" src="./js/startup_leaf.js"></script>
+  <!-- Leaflet heatmap plugin-->
+  <script type="text/javascript" src="./js/startup_leaf.js"></script>
 
-    <!-- D3 library -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- D3 library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 
-    <!-- Our CSS  -->
-    <link rel="stylesheet" href="./css/startup.css" />
+  <!-- Our CSS  -->
+  <link rel="stylesheet" href="./css/startup.css" />
 
-  </head>
-<!--marker map anytime you hover a country itll show the most popular song and artist-->
-  <body>
+  <!-- Styles for the redirect button -->
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      position: relative;
+    }
 
-    <div id="map"></div>
+    form {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
 
-    <!-- JavaScript file -->
-    <script type="text/javascript" src="./js/startup_markers.js"></script>
-    <script type="text/javascript" src="./js/startup_heatmap.js"></script>
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff; /* Bootstrap primary color */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
+    input[type="submit"]:hover {
+      background-color: #0056b3; /* Darker shade for hover effect */
+    }
+  </style>
+</head>
 
-  </body>
+<body>
+
+  <!-- Add a dropdown for countries -->
+  <select id="countryDropdown">
+    <!-- Options will be loaded here -->
+  </select>
+
+  <div id="map"></div>
+
+  <!-- JavaScript file -->
+  <script type="text/javascript" src="./js/startup_markers.js"></script>
+  <script type="text/javascript" src="./js/startup_heatmap.js"></script>
+
+  <!-- Load Countries Script -->
+  <script>
+    function loadCountries() {
+      fetch('whatever the end point is').then(response => response.json()).then(data => {
+        let dropdown = document.getElementById('countryDropdown');
+        data.forEach(country => {
+          let option = document.createElement('option');
+          option.value = country;
+          option.text = country;
+          dropdown.appendChild(option);
+        });
+      });
+    }
+    window.onload = loadCountries;
+  </script>
+
+  <!-- Redirect Button Form -->
+  <form action="http://127.0.0.1:5502/choropleth.html">
+    <input type="submit" value="Go to choropleth" />
+  </form>
+
+</body>
 
 </html>

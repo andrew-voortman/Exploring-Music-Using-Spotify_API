@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Redirect Button Long Test</title>
-    <style>
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 9px #999;
-        }
-
-        .button:hover {background-color: #3e8e41}
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Interactive Visuals</title>
+  <style>
+    .visual {
+      display: none;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <h2>Select an Option to Change Visuals</h2>
+  <select id="visualSelector" onchange="updateVisuals(this.value)">
+    <option value="">Select an option</option>
+    <option value="visual1">Visual 1</option>
+    <option value="visual2">Visual 2</option>
+    <option value="visual3">Visual 3</option>
+  </select>
 
-<a href="https://www.example.com" class="button">Go to Example.com</a>
+  <div id="visual1" class="visual">Visual Content 1</div>
+  <div id="visual2" class="visual">Visual Content 2</div>
+  <div id="visual3" class="visual">Visual Content 3</div>
 
+  <script>
+    function updateVisuals(selectedValue) {
+      // Hide all visuals
+      document.querySelectorAll('.visual').forEach(div => div.style.display = 'none');
+
+      // Show the selected visual
+      if (selectedValue) {
+        document.getElementById(selectedValue).style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>

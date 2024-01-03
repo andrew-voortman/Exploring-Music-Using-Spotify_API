@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Redirect Button</title>
+    <meta charset="UTF-8">
+    <title>Redirect to Choropleth Map</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff; /* Bootstrap primary color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker shade for hover effect */
+        }
+    </style>
 </head>
 <body>
-
-<form action="https://www.example.com">
-    <input type="submit" value="Go to Example.com" />
-</form>
-
+    <form action="http://127.0.0.1:5502/choropleth.html">
+        <input type="submit" value="Go to Choropleth Map" />
+    </form>
 </body>
 </html>
