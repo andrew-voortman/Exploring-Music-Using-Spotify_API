@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 # Define what to do when a user hits the index route
 @app.route("/")
-def home():
+def index():
     print("Server received request for 'Home' page...")
     return (
         "Welcome to our Spotify dashboard!<br/><br/>"
@@ -38,16 +38,15 @@ def home():
         "<a href='/api/v1.0/test'>/api/v1.0/test</a>"
     )
 
-    # return render_template("home.html") 
+    # return render_template("index.html") 
 
 @app.route("/api/v1.0/country")
 def country():
-    return "there will be a dropdown for you to select a country - then the most popular tracks from this country wil appear"
-    # return render_template("country.html") 
+    return render_template("dropdownstarter.html") 
 
 @app.route("/api/v1.0/correlations")
 def correlations():
-    return "scatter plot"
+    return render_template("buttontestlong.html")
 
 @app.route("/api/v1.0/map")
 def map():
@@ -60,7 +59,7 @@ def test():
     session = Session(engine)
 
     # Query the database (replace this with your actual query)
-    results = session.query(songs.trackname, songs.artistname).limit(50)
+    results = session.query(songs.trackname, songs.artistname, songs.country, songs.popularity, songs.danceability, songs.energy, songs.tempo, songs.positiveness).limit(50)
 
     result_list = [dict(row) for row in results]
 
