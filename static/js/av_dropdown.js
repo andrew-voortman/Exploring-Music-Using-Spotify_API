@@ -1,9 +1,6 @@
-const path = "http://127.0.0.1:5000/api/v1.0/country"
+const path = "/api/v1.0/test"
 
 function init(){
-    // this checks that our initial function runs.
-    console.log("The Init() function ran");
-
     // create dropdownmenu using d3
     // quitlet dropDownMenu = d3.select('#selDataset');
 
@@ -12,6 +9,8 @@ function init(){
         console.log(`Data: ${data}`);
     });
 };
+
+init();
 //         // create an array of id names
 //         let countries = data.topmusic;
         
