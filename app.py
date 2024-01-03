@@ -47,13 +47,11 @@ def country():
 
 @app.route("/api/v1.0/correlations")
 def correlations():
-    return "scatter plot and regression line for your choice of two variables"
-    # return render_template("correlations.html")
+    return "scatter plot"
 
 @app.route("/api/v1.0/map")
 def map():
-    return "map showing the top songs for the selected country"
-    # return render_template("map.html")
+    return render_template("leafletmapzoom.html")
 
 @app.route("/api/v1.0/test")
 def test():
