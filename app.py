@@ -30,18 +30,8 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     print("Server received request for 'Home' page...")
-    return (
-        "Welcome to our Spotify dashboard!<br/><br/>"
-        "Available Routes:<br/><br/>"
-        "<a href='/test'>/test</a><br/>"
-        "<a href='/api/v1.0/test'>/api/v1.0/test</a>"
-    )
 
-    # return render_template("index.html") 
-
-@app.route("/test")
-def test():
-    return render_template("leafletmapzoom.html") 
+    return render_template("index.html") 
 
 
 @app.route("/api/v1.0/test")
