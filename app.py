@@ -40,14 +40,15 @@ def test_data():
     # Create a session
     session = Session(engine)
 
-    # Query the database (replace this with your actual query)
-    results = session.query(songs.trackname, songs.artistname, songs.country, songs.albumname, songs.danceability, songs.duration, songs.energy, songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness)
-
+    # Query the database for necessary data
+    results = session.query(songs.country, songs.trackname, songs.artistname, songs.albumname, songs.danceability, songs.duration, songs.energy, songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness)
+    
     result_list = [dict(row) for row in results]
 
     # Close the session
     session.close()
-
+    
     return jsonify(result_list)
+
 if __name__ == "__main__":
     app.run(debug=True)

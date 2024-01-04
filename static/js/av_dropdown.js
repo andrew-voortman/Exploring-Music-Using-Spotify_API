@@ -1,24 +1,39 @@
 const path = "/api/v1.0/test"
 
-function init(){
+function init() {
     // create dropdownmenu using d3
-    // quitlet dropDownMenu = d3.select('#selDataset');
+    let dropDownMenu = d3.select('#selDataset');
 
     // Fetch data from api using d3 and console log the data.
     d3.json(path).then((data) => {
-        console.log(`Data: ${data}`);
+        // console.log(data);     
+    
+    // create an array of country names
+        let dataarray = Object.entries(data).reduce((acc, [key, value]) => {
+            Object.keys(value).forEach(subKey => {
+                acc[subKey] = acc[subKey] || [];
+                acc[subKey].push(value[subKey]);
+            });
+            return acc;
+        });
+        console.log(dataarray);
+
+        // pull out country names
+        let countries = dataarray.country
+        console.log(countries);
+
+        countries.forEach((country) => {
+            dropDownMenu.append('option').text(country).property('value', country);
+        });
     });
 };
 
 init();
-//         // create an array of id names
-//         let countries = data.topmusic;
-        
-//         // Add names to dropdownmenu
-//         countries.forEach((country) => {
-//             // console.log(name);
-//             dropDownMenu.append('option').text(country).property('value', country);
-//         });
+        // Add names to dropdownmenu
+    //    countries.forEach((country) => {
+    //        console.log(country);
+//            dropDownMenu.append('option').text(country).property('value', country);
+    //    });
 
 //         // choose the first sample as default id to run on page open/refresh
 //         let country = countries[0];
@@ -55,5 +70,3 @@ init();
 // };
 
 // function optionChange(newArtist){
-
-// }
