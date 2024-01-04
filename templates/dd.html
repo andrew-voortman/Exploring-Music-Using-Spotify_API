@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>How Does Your Favorite Genre Stack Up?</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script>
+    function optionChanged(selectedValue) {
+      console.log("Selected:", selectedValue);
+      document.getElementById('bar').style.display = 'none';
+      document.getElementById('gauge').style.display = 'none';
+      document.getElementById('bubble').style.display = 'none';
+      document.getElementById('scatterplot').style.display = 'none';
+      if (selectedValue === 'Duration') {
+        document.getElementById('bar').style.display = 'block';
+      } else if (selectedValue === 'Danceability') {
+        document.getElementById('gauge').style.display = 'block';
+      } else if (selectedValue === 'Positiveness') {
+        document.getElementById('bubble').style.display = 'block';
+      } else if (selectedValue === 'Energy') {
+        document.getElementById('scatterplot').style.display = 'block';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- Other content -->
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Attributes</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)">
+            <option value="">Select an option</option>
+            <option value="Duration">Duration</option>
+            <option value="Danceability">Danceability</option>
+            <option value="Positiveness">Positiveness</option>
+            <option value="Energy">Energy</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="bar" style="display: none;">Bar Chart Placeholder</div>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge" style="display: none;">Gauge Chart Placeholder</div>
+      </div>
+      <div class="col-md-12">
+        <div id="bubble" style="display: none;">Bubble Chart Placeholder</div>
+      </div>
+      <div class="col-md-7">
+        <div id="scatterplot" style="display: none;">Scatterplot Chart Placeholder</div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/js/plots.js"></script>
+  <!-- <script src = "PapaParse/papaparse. js"; pp. onload = function(e){ console. log("papa parse works here!"); }; ></script> -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

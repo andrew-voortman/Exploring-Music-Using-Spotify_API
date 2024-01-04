@@ -1,0 +1,28 @@
+import os
+import pandas as pd
+from sqlalchemy import create_engine
+import sqlite3
+
+# Create a SQLite engine that stores data in the local directory
+engine = create_engine('sqlite:///data.sqlite')
+
+# Get a list of all CSV files in the current directory
+csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
+
+# Iterate over each CSV file
+for csv_file in csv_files:
+    # Read the CSV file into a pandas DataFrame
+    df = pd.read_csv(csv_file)
+    
+    # Use the CSV filename without extension as the table name
+    table_name = os.path.splitext(csv_file)[0]
+    
+    # Write the data to the SQLite database
+    df.to_sql(table_name, engine, index=True, index_label="id", if_exists='replace')
+    
+    print(f"Table '{table_name}' has been written to the database.")
+
+print("All CSV files have been imported into the SQLite database.")
+
+with engine.connect() as con:
+    con.execute("ALTER TABLE 'topmusic' ADD PRIMARY KEY ('col1);")
