@@ -51,7 +51,7 @@ def test_data():
     return jsonify(result_list)
 
 @app.route("/api/v1.0/test2")
-def test_data_2():
+def country_data():
 
     # Create a session
     session = Session(engine)
@@ -68,7 +68,7 @@ def test_data_2():
     return jsonify(result_list)
 
 @app.route("/api/v1.0/test3/<country>")
-def test_data_3(country):
+def summary_data(country):
 
     # Create a session
     session = Session(engine)
