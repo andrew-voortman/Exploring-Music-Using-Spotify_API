@@ -41,7 +41,7 @@ def test_data():
     session = Session(engine)
 
     # Query the database for necessary data
-    results = session.query(songs.country, songs.trackname, songs.artistname, songs.albumname, songs.danceability, songs.duration, songs.energy, songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness)
+    results = session.query(songs.country, songs.trackname, songs.artistname, songs.albumname, songs.danceability, songs.popularity, songs.duration, songs.energy, songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness)
     
     result_list = [dict(row) for row in results]
 
