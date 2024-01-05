@@ -29,7 +29,6 @@
     } -->
   </head>
   <body>
-    <h5>Attributes</h5>
     <select id="selDataset" onchange="optionChanged(this.value)">
       <option value="">Select an option</option>
       <option value="Taylor Swift">Taylor Swift</option>
@@ -39,6 +38,17 @@
       <option value="Energy">Energy</option>
     </select>
 
+    <select id="selDataset2" onchange="optionChanged2(this.value)">
+      <option value="duration">Select an option</option>
+      <option value="duration">Duration</option>
+      <option value="tempo">Popularity</option>
+      <option value="danceability">Danceability</option>
+      <option value="positiveness">Positiveness</option>
+      <option value="energy">Energy</option>
+      <option value="loudness">Loudness</option>
+    </select>
+
+    
     <!-- </div>
       <div class="col-md-5">
         <div id="bar" style="display: none;">Bar Chart Placeholder</div>
@@ -51,8 +61,11 @@
       </div>
       <div class="col-md-7">
         <div id="scatterplot"></div> -->
+    <div id="scatterplot"></div>
+
     <div id="popularity"></div>
     <div id="danceability"></div>
+
     <script src="../static/js/startup_markers.js"></script>
   </body>
 </html>

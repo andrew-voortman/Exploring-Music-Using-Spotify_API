@@ -58,47 +58,50 @@ function optionChanged(selectedValue) {
   });
 }
 
-// function optionChanged(selectedValue) {
-//   console.log("Selected artist:", selectedValue);
+function optionChanged2(selectedValue) {
+  console.log("Selected Feature:", selectedValue);
 
-//   d3.json("/api/v1.0/test").then(function(rows) {
+  // Fetch the data from your API
+  d3.json("/api/v1.0/test").then((data) => {
+    console.log(data);
 
-//     console.log(rows);
-//     // Helper function to unpack data
-//     function unpack(rows, key) {
-//       return rows.map(function(row) { return row[key]; });
-//     }
+    // Filter data for the specific artist selected by the user
+    // var filteredData = data.filter(function (d) {
+    //   return d["artistname"] == selectedValue;
+    // });
 
-//     // Filter data for the specific artist selected by the user
-//     var filteredData = rows.filter(function(d) {
-//       return d['Artist Name'] === selectedValue;
-//     });
+    // Extract the columns for scatterplot
+    var popularity = data.map((d) => d["popularity"]);
+    var selectedColumn = data.map((d) => d[selectedValue]);
+    console.log(popularity);
+    console.log(selectedColumn);
+    // Create a scatterplot trace
+    var trace = {
+      x: selectedColumn,
+      y: popularity,
+      mode: 'markers',
+      type: 'scatter',
+      marker: {
+        size: 10,
+        color: 'blue', // You can set the desired color
+        opacity: 0.5,
+      },
+    };
 
-//     // Prepare data for the choropleth map
-//     var data = [{
-//       type: 'choropleth',
-//       locationmode: 'country names',
-//       locations: unpack(filteredData, 'Country'), // Use unpack on filtered data
-//       z: unpack(filteredData, 'Danceability'),
-//       text: unpack(filteredData, 'Country'),
-//       autocolorscale: true
-//     }];
+    // Create the layout for the scatterplot
+    var layout = {
+      title: selectedValue + " vs Popularity",
+      xaxis: {
+        title: selectedValue,
+        autorange: true, // Automatically scale the x-axis
+      },
+      yaxis: {
+        title: "Popularity",
+        autorange: true, // Automatically scale the y-axis
+      },
+    };
 
-//     // Define the layout for the Plotly plot
-//     var layout = {
-//       title: 'Popularity by Country for ' + selectedValue,
-//       geo: {
-//         projection: {
-//           type: 'robinson'
-//         }
-//       }
-//     };
-
-//     // Plot the data using Plotly
-//     Plotly.newPlot("myDiv", data, layout, {showLink: false});
-
-//   }).catch(function(err) {
-//     // Error handling
-//     console.error(err);
-//   });
-// }
+    // Create a scatterplot with Plotly
+    Plotly.newPlot("scatterplot", [trace], layout);
+  });
+}
