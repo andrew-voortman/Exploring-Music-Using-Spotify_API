@@ -50,5 +50,39 @@ def test_data():
     
     return jsonify(result_list)
 
+@app.route("/api/v1.0/test2")
+def test_data_2():
+
+    # Create a session
+    session = Session(engine)
+
+    # Query the database for necessary data
+    results = session.query(songs.country).distinct().\
+        order_by(songs.country.asc()).all()
+    
+    result_list = [dict(row) for row in results]
+
+    # Close the session
+    session.close()
+    
+    return jsonify(result_list)
+
+@app.route("/api/v1.0/test3/<country>")
+def test_data_3(country):
+
+    # Create a session
+    session = Session(engine)
+
+    # Query the database for necessary data
+    results = session.query(songs.country, songs.trackname, songs.artistname, songs.albumname, songs.popularity).filter(songs.country == country).\
+        order_by(songs.popularity.desc()).limit(5)
+    
+    result_list = [dict(row) for row in results]
+
+    # Close the session
+    session.close()
+    
+    return jsonify(result_list)
+
 if __name__ == "__main__":
     app.run(debug=True)

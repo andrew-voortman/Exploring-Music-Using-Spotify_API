@@ -1,4 +1,4 @@
-const path = "/api/v1.0/test"
+const path = "/api/v1.0/test2"
 
 function init() {
     // create dropdownmenu using d3
@@ -8,7 +8,7 @@ function init() {
     d3.json(path).then((data) => {
         // console.log(data);     
     
-    // create an array of country names
+    // create an array from the data
         let dataarray = Object.entries(data).reduce((acc, [key, value]) => {
             Object.keys(value).forEach(subKey => {
                 acc[subKey] = acc[subKey] || [];
@@ -25,25 +25,14 @@ function init() {
         countries.forEach((country) => {
             dropDownMenu.append('option').text(country).property('value', country);
         });
+
+        let selectedCountry = country[0];
+
+        summary(selectedCountry)
     });
 };
 
 init();
-        // Add names to dropdownmenu
-    //    countries.forEach((country) => {
-    //        console.log(country);
-//            dropDownMenu.append('option').text(country).property('value', country);
-    //    });
-
-//         // choose the first sample as default id to run on page open/refresh
-//         let country = countries[0];
-
-//         // run functions to generate plots with default id
-//         summary(country);
-
-//     });
-
-// }
 
 // function summary(selectedID){
 //     // Fetch data from api using d3.
