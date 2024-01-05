@@ -61,7 +61,8 @@ def test_data():
         songs.liveness,
         songs.loudness,
         songs.tempo,
-        songs.positiveness
+        songs.positiveness,
+        songs.popularity
     )
 
     # Convert the query result into a list of dictionaries
@@ -79,7 +80,9 @@ def test_data():
             "liveness": row[8],
             "loudness": row[9],
             "tempo": row[10],
-            "positiveness": row[11]
+            "positiveness": row[11],
+            "popularity": row[12],
+
         }
         result_list.append(result_dict)
 

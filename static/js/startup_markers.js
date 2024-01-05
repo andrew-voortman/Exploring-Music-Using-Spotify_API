@@ -17,7 +17,7 @@ function optionChanged(selectedValue) {
         type: "choropleth",
         locationmode: "ISO-3",
         locations: filteredData.map((d) => d["country"]),
-        z: filteredData.map((d) => d["danceability"]),
+        z: filteredData.map((d) => d["popularity"]),
         text: filteredData.map((d) => d["country"]),
         autocolorscale: true,
       },
@@ -32,8 +32,29 @@ function optionChanged(selectedValue) {
       },
     };
     
+    var plotData2 = [
+      {
+        type: "choropleth",
+        locationmode: "ISO-3",
+        locations: filteredData.map((d) => d["country"]),
+        z: filteredData.map((d) => d["danceability"]),
+        text: filteredData.map((d) => d["country"]),
+        autocolorscale: true,
+      },
+    ];
+
+    var layout2 = {
+      title: "Danceability by Country for " + selectedValue,
+      geo: {
+        projection: {
+          type: "robinson",
+        },
+      },
+    };
     // Render the choropleth map with Plotly
-    Plotly.newPlot("myDiv", plotData, layout);
+    Plotly.newPlot("popularity", plotData, layout);
+    Plotly.newPlot("danceability", plotData2, layout2);
+
   });
 }
 
