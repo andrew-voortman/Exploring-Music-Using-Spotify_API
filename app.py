@@ -31,7 +31,7 @@ app = Flask(__name__)
 def index():
     print("Server received request for 'Home' page...")
 
-    return render_template("index.html") 
+    return render_template("index_2.html") 
 
 
 @app.route("/api/v1.0/test")
@@ -41,7 +41,8 @@ def test_data():
     session = Session(engine)
 
     # Query the database (replace this with your actual query)
-    results = session.query(songs.trackname, songs.artistname, songs.country, songs.albumname, songs.danceability, songs.duration, songs.energy, songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness)
+    results = session.query(songs.trackname, songs.artistname, songs.country, songs.albumname, songs.danceability, songs.duration, songs.energy,
+                             songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness).filter(songs.country == 'Global').all()
 
     result_list = [dict(row) for row in results]
 
