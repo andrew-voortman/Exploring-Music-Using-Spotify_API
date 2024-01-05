@@ -88,6 +88,8 @@ function optionChanged2(selectedValue) {
       },
     };
 
+    // capitalize value
+
     var newSelectedValue = selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1);
 
     // Create the layout for the scatterplot
