@@ -40,17 +40,15 @@ def test_data():
     # Create a session
     session = Session(engine)
 
-    # Query the database (replace this with your actual query)
-    results = session.query(songs.trackname, songs.artistname, songs.country, songs.albumname, songs.popularity, songs.danceability, songs.duration, songs.energy,
-                             songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness).filter(songs.country == 'Global').all()
-
+    # Query the database for necessary data
+    results = session.query(songs.country, songs.trackname, songs.artistname, songs.albumname, songs.danceability, songs.duration, songs.energy, songs.instrumentalness, songs.liveness, songs.loudness, songs.tempo, songs.positiveness)
+    
     result_list = [dict(row) for row in results]
 
     # Close the session
     session.close()
-
+    
     return jsonify(result_list)
-
 
 @app.route("/api/v1.0/test2")
 def test_data_2():
@@ -66,9 +64,8 @@ def test_data_2():
 
     # Close the session
     session.close()
-
+    
     return jsonify(result_list)
-
 
 @app.route("/api/v1.0/test3/<country>")
 def test_data_3(country):
@@ -76,14 +73,15 @@ def test_data_3(country):
     # Create a session
     session = Session(engine)
 
-    # Query the database (replace this with your actual query)
-    results = session.query(songs.trackname, songs.artistname, songs.country, songs.popularity).filter(songs.country == country).order_by(songs.popularity.desc()).limit(5)
-                            
+    # Query the database for necessary data
+    results = session.query(songs.country, songs.trackname, songs.artistname, songs.albumname, songs.popularity).filter(songs.country == country).\
+        order_by(songs.popularity.desc()).limit(5)
+    
     result_list = [dict(row) for row in results]
 
     # Close the session
     session.close()
-
+    
     return jsonify(result_list)
 
 if __name__ == "__main__":
