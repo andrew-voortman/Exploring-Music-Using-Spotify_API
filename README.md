@@ -36,24 +36,23 @@ Cleaned data:
 ![Alt text](image-1.png)
 
 ## SQLite ##
-screenshots and explanation of what we did
+Created database of all music files using Python
+![image](https://github.com/andrew-voortman/Exploring-Music-Using-Spotify_API/assets/143106240/1dc174f3-ab81-4f8f-b32f-828b9c6c3f97)
 
 
 
 ## Flask Application ##
-screenshots and explanation of what we did
-
+Created 3 Query Routes generated to create the visalizations
+![image](https://github.com/andrew-voortman/Exploring-Music-Using-Spotify_API/assets/143106240/af264001-bb3c-4582-81cb-c6cd1753b077)
 
 
 ## Dashboard / HTML ##
-Creating a moving background with help from alvarotrigo.com
+Image of the dahboard
+![image](https://github.com/andrew-voortman/Exploring-Music-Using-Spotify_API/assets/143106240/14c7e7e2-36d2-47ec-b68b-5d3bd1b59b6b)
 
-![Alt text](image-2.png)
+Code for the html dashboard
+![image](https://github.com/andrew-voortman/Exploring-Music-Using-Spotify_API/assets/143106240/3a544d0b-868b-4d7b-9c11-69ed792c322a)
 
-
-
-## Dashboard / Javascript ##
-screenshots and explanation of what we did
 
 
 
