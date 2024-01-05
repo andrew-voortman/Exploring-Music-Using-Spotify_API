@@ -26,36 +26,48 @@ function init() {
             dropDownMenu.append('option').text(country).property('value', country);
         });
 
-        let selectedCountry = country[0];
+        let starterCountry = countries[0];
 
-        summary(selectedCountry)
+        summary(starterCountry)
     });
 };
 
-init();
+function summary(selectedCountry){
+    const path2 = `/api/v1.0/test3/${selectedCountry}`
 
-// function summary(selectedID){
-//     // Fetch data from api using d3.
-//     d3.json(url).then((data) => {
+    // Fetch data from api using d3.
+    d3.json(path2).then((data) => {
+        console.log(data);
+    
+    // create an array from the data
+    let dataarray = Object.entries(data).reduce((acc, [key, value]) => {
+        Object.keys(value).forEach(subKey => {
+            acc[subKey] = acc[subKey] || [];
+            acc[subKey].push(value[subKey]);
+        });
+        return acc;
+    });
+    console.log(dataarray);
 
-//         // retrieve an array of metadata objects
-//         let metadata = data.metadata;
-
-//         // filter the data based on values of the selected id
-//         let selected = metadata.filter(i => i.id == selectedID);
+    // filter the data based on values of the selected id
+    let selected = dataarray.filter(i => i.country == selectedCountry);
         
-//         // get the first index of the array
-//         let selectedData = selected[0];
+    // get the first index of the array
+    let selectedData = selected[0];
         
-//         // clear html element using d3
-//         d3.select("#sample-metadata").html("");
+    // clear html element using d3
+    d3.select("#summary").html("");
 
-//         // Use Object.entries to return an array of the each key/value
-//         Object.entries(selectedData).forEach(([key, value]) => {
-//             // code to append and makes list, paragraph, text/linebreaks at id='sample-meta'
-//             d3.select("#sample-metadata").append('h5').text(`${key}: ${value}`);
-//         });
-//     });
-// };
+    // Use Object.entries to return an array of the each key/value
+    Object.entries(selectedData).forEach(([key, value]) => {
+        // code to append and makes list, paragraph, text/linebreaks at id='summary'
+        d3.select("#summary").append('h5').text(`${key}: ${value}`);
+        });
+    });
+};
 
-// function optionChange(newArtist){
+function optionChanged3(selectedCountry){
+    summary(selectedCountry)
+};
+
+init()
