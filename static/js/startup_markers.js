@@ -88,11 +88,13 @@ function optionChanged2(selectedValue) {
       },
     };
 
+    var newSelectedValue = selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1);
+
     // Create the layout for the scatterplot
     var layout = {
-      title: selectedValue + " vs Popularity",
+      title: newSelectedValue + " vs Popularity",
       xaxis: {
-        title: selectedValue,
+        title: newSelectedValue,
         autorange: true, // Automatically scale the x-axis
       },
       yaxis: {
