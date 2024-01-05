@@ -54,8 +54,7 @@ Code for the html dashboard
 ![image](https://github.com/andrew-voortman/Exploring-Music-Using-Spotify_API/assets/143106240/3a544d0b-868b-4d7b-9c11-69ed792c322a)
 
 
-
-
 ## Maps ##
-Our visualizations will include a world map displaying the top artists in each country, a breakdown of artist information in different countries, and a comparison of song popularity ratings. 
+Popularity and Danceablity of specific artists per country
+![image](https://github.com/andrew-voortman/Exploring-Music-Using-Spotify_API/assets/143106240/6e34df30-52da-4439-b2ab-368abe6bb765)
 
