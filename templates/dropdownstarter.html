@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>How Does Your Favorite Genre Stack Up?</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./static/js/app.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>How Does Your Favorite Genre Stack Up?</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- <script src="/static/js/app.js"></script> -->
 
-      <!-- document.getElementById('bar').style.display = 'none';
+    <!-- document.getElementById('bar').style.display = 'none';
       document.getElementById('gauge').style.display = 'none';
       document.getElementById('bubble').style.display = 'none';
       document.getElementById('scatterplot').style.display = 'none';
@@ -24,20 +27,19 @@
         document.getElementById('scatterplot').style.display = 'block';
       }
     } -->
-</head>
-<body>
-<h5>Attributes</h5>
-<select id="selDataset" onchange="optionChanged(this.value)">
-            <option value="">Select an option</option>
-            <option value="Taylor Swift">Taylor Swift</option>
-            <option value="Jung Kook">Jung Kook</option>
-            <option value="Danceability">Danceability</option>
-            <option value="Positiveness">Positiveness</option>
-            <option value="Energy">Energy</option>
-          </select>
-    
-      
-      <!-- </div>
+  </head>
+  <body>
+    <h5>Attributes</h5>
+    <select id="selDataset" onchange="optionChanged(this.value)">
+      <option value="">Select an option</option>
+      <option value="Taylor Swift">Taylor Swift</option>
+      <option value="Jung Kook">Jung Kook</option>
+      <option value="Danceability">Danceability</option>
+      <option value="Positiveness">Positiveness</option>
+      <option value="Energy">Energy</option>
+    </select>
+
+    <!-- </div>
       <div class="col-md-5">
         <div id="bar" style="display: none;">Bar Chart Placeholder</div>
       </div>
@@ -49,9 +51,7 @@
       </div>
       <div class="col-md-7">
         <div id="scatterplot"></div> -->
-        <div id="myDiv"></div>
-        <script src="../static/js/startup_markers.js"></script>
-    
-</body>
+    <div id="myDiv"></div>
+    <script src="../static/js/startup_markers.js"></script>
+  </body>
 </html>
-
