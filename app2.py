@@ -90,7 +90,7 @@ def test_data():
     df = pd.DataFrame(result_list)
 
     # Group by 'country' and 'artistname' and calculate the mean
-    grouped_df = df.groupby(['country', 'artistname'], as_index=False).mean()
+    grouped_df = df.groupby(['country', 'artistname'], as_index=False).mean(numeric_only=True)
 
     # Convert the grouped DataFrame to a list of dictionaries
     grouped_result_list = grouped_df.to_dict(orient='records')

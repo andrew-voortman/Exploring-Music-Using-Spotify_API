@@ -1,5 +1,6 @@
 //   // Fetch the data from your API
 function optionChanged(selectedValue) {
+  console.log("Selected artist:", selectedValue);
   // Fetch the data from your API
   d3.json("/api/v1.0/test").then((data) => {
     console.log(data);
@@ -7,14 +8,14 @@ function optionChanged(selectedValue) {
 
     // Filter data for the specific artist selected by the user
     var filteredData = data.filter(function (d) {
-      return d["Artist Name"] == selectedValue;
+      return d["artistname"] == selectedValue;
     });
 
     // Map the filtered data to plotData for Plotly
     var plotData = [
       {
         type: "choropleth",
-        locationmode: "country names",
+        locationmode: "ISO-3",
         locations: filteredData.map((d) => d["country"]),
         z: filteredData.map((d) => d["danceability"]),
         text: filteredData.map((d) => d["country"]),
@@ -26,11 +27,11 @@ function optionChanged(selectedValue) {
       title: "Popularity by Country for " + selectedValue,
       geo: {
         projection: {
-          type: "equirectangular",
+          type: "robinson",
         },
       },
     };
-
+    
     // Render the choropleth map with Plotly
     Plotly.newPlot("myDiv", plotData, layout);
   });
