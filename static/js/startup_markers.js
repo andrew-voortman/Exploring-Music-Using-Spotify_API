@@ -1,34 +1,111 @@
-let myMap = L.map("map", {
-    center: [-32.8, 117.9],
-    zoom: 7
+//   // Fetch the data from your API
+function optionChanged(selectedValue) {
+  console.log("Selected artist:", selectedValue);
+  // Fetch the data from your API
+  d3.json("/api/v1.0/test").then((data) => {
+    console.log(data);
+    // Sample data as an array of objects
+
+    // Filter data for the specific artist selected by the user
+    var filteredData = data.filter(function (d) {
+      return d["artistname"] == selectedValue;
+    });
+
+    // Map the filtered data to plotData for Plotly
+    var plotData = [
+      {
+        type: "choropleth",
+        locationmode: "ISO-3",
+        locations: filteredData.map((d) => d["country"]),
+        z: filteredData.map((d) => d["popularity"]),
+        text: filteredData.map((d) => d["country"]),
+        autocolorscale: true,
+      },
+    ];
+
+    var layout = {
+      title: "Popularity by Country for " + selectedValue,
+      geo: {
+        projection: {
+          type: "robinson",
+        },
+      },
+    };
+    
+    var plotData2 = [
+      {
+        type: "choropleth",
+        locationmode: "ISO-3",
+        locations: filteredData.map((d) => d["country"]),
+        z: filteredData.map((d) => d["danceability"]),
+        text: filteredData.map((d) => d["country"]),
+        autocolorscale: true,
+      },
+    ];
+
+    var layout2 = {
+      title: "Danceability by Country for " + selectedValue,
+      geo: {
+        projection: {
+          type: "robinson",
+        },
+      },
+    };
+    // Render the choropleth map with Plotly
+    Plotly.newPlot("popularity", plotData, layout);
+    Plotly.newPlot("danceability", plotData2, layout2);
+
   });
-  
-  // Adding the tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(myMap);
-  
-  let url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/15-Mapping-Web/Water_Hydrant_WCORP_070_WA_GDA2020_Public.geojson";
-  
-  d3.json(url).then(function(response) {
-  
-    //console.log(response);plotly leafy
-    features = response.features;
-  
-    //console.log(features);
-  
-    // Comment this line in to render all 80,000 markers
-    // let marker_limit = features.length;
-    let marker_limit = 1000;
-  
-    for (let i = 0; i < marker_limit; i++) {
-  
-      let location = features[i].geometry;
-      if(location){
-        L.marker([location.coordinates[1], location.coordinates[0]]).addTo(myMap);
-      }
-  
-    }
-  
+}
+
+function optionChanged2(selectedValue) {
+  console.log("Selected Feature:", selectedValue);
+
+  // Fetch the data from your API
+  d3.json("/api/v1.0/test").then((data) => {
+    console.log(data);
+
+    // Filter data for the specific artist selected by the user
+    // var filteredData = data.filter(function (d) {
+    //   return d["artistname"] == selectedValue;
+    // });
+
+    // Extract the columns for scatterplot
+    var popularity = data.map((d) => d["popularity"]);
+    var selectedColumn = data.map((d) => d[selectedValue]);
+    console.log(popularity);
+    console.log(selectedColumn);
+    // Create a scatterplot trace
+    var trace = {
+      x: selectedColumn,
+      y: popularity,
+      mode: 'markers',
+      type: 'scatter',
+      marker: {
+        size: 10,
+        color: 'blue', // You can set the desired color
+        opacity: 0.5,
+      },
+    };
+
+    // capitalize value
+
+    var newSelectedValue = selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1);
+
+    // Create the layout for the scatterplot
+    var layout = {
+      title: newSelectedValue + " vs Popularity",
+      xaxis: {
+        title: newSelectedValue,
+        autorange: true, // Automatically scale the x-axis
+      },
+      yaxis: {
+        title: "Popularity",
+        autorange: true, // Automatically scale the y-axis
+      },
+    };
+
+    // Create a scatterplot with Plotly
+    Plotly.newPlot("scatterplot", [trace], layout);
   });
-  
+}
